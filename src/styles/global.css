@@ -1,41 +1,47 @@
 /* ============================================================
    WHITE VALENTINE — Global Styles
-   Theme: Elegant light cream / champagne gold / blush rose
+   Theme: Soft light pink / blush rose
    ============================================================ */
 
-/* ---- Google Fonts: Cormorant Garamond + Great Vibes + Nunito ---- */
-
 :root {
-  /* Core palette */
-  --gold:          #b8922a;
-  --gold-light:    #d4a853;
-  --gold-pale:     #f0d992;
-  --gold-shimmer:  #ffe8a0;
-  --blush:         #e8b4be;
-  --blush-deep:    #c97080;
-  --blush-light:   #fce8ec;
-  --cream:         #fdf7f0;
-  --cream-mid:     #fef5ed;
-  --cream-deep:    #f7ede0;
-  --warm-white:    #fffcf8;
-  --ivory:         #fafaf5;
+  /* Core palette — soft pink */
+  --pink:          #e879a6;
+  --pink-deep:     #d1478a;
+  --pink-light:    #f9a8d4;
+  --pink-pale:     #fce7f3;
+  --pink-shimmer:  #ffe0f0;
+  --blush:         #f472b6;
+  --blush-deep:    #db2777;
+  --blush-light:   #fdf2f8;
+  --rose:          #ec4899;
+  --cream:         #fdf4f9;
+  --cream-mid:     #fef4fb;
+  --cream-deep:    #fae0f0;
+  --warm-white:    #fffafd;
+  --ivory:         #fef8fc;
+
+  /* Backward-compat aliases used in other CSS files */
+  --gold:          #e879a6;
+  --gold-light:    #f472b6;
+  --gold-pale:     #fce7f3;
+  --gold-shimmer:  #ffe0f0;
 
   /* Text */
-  --text-dark:     #2e1f14;
-  --text-mid:      #6b4535;
-  --text-muted:    #a07868;
-  --text-soft:     #c4a090;
+  --text-dark:     #3b0d25;
+  --text-mid:      #7e2d55;
+  --text-muted:    #c47a9a;
+  --text-soft:     #e0a8bf;
 
   /* Backgrounds */
-  --gradient-bg:   linear-gradient(160deg, #fdf7f0 0%, #fff8f5 35%, #fdf0f5 65%, #f8f5ff 100%);
-  --gradient-hero: linear-gradient(135deg, #fef9f0 0%, #fdf5f8 100%);
+  --gradient-bg:   linear-gradient(160deg, #fdf4f9 0%, #fff8fb 40%, #fdf0f6 70%, #f8f5ff 100%);
+  --gradient-hero: linear-gradient(135deg, #fef4f8 0%, #fdf0f6 100%);
 
   /* Card / surface */
-  --card-bg:       rgba(255, 253, 250, 0.82);
-  --card-border:   rgba(184, 146, 42, 0.2);
-  --card-border-hover: rgba(184, 146, 42, 0.45);
-  --card-shadow:   0 8px 40px rgba(184, 146, 42, 0.12), 0 2px 12px rgba(200, 120, 100, 0.08);
-  --card-shadow-hover: 0 16px 60px rgba(184, 146, 42, 0.22), 0 4px 20px rgba(200, 120, 100, 0.14);
+  --card-bg:       rgba(255, 248, 253, 0.88);
+  --card-border:   rgba(232, 121, 166, 0.22);
+  --card-border-hover: rgba(232, 121, 166, 0.5);
+  --card-shadow:   0 8px 32px rgba(232, 121, 166, 0.12), 0 2px 10px rgba(200, 80, 120, 0.06);
+  --card-shadow-hover: 0 16px 50px rgba(232, 121, 166, 0.22), 0 4px 18px rgba(200, 80, 120, 0.12);
 
   /* Misc */
   --radius:        22px;
@@ -47,6 +53,7 @@
   --font-romantic: 'Great Vibes', cursive;
   --font-title:    'Playfair Display', serif;
   --font-body:     'Nunito', sans-serif;
+  --font-script:   'Dancing Script', cursive;
 }
 
 /* ---- Reset ---- */
@@ -67,78 +74,83 @@ body {
 /* ---- Scrollbar ---- */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--cream); }
-::-webkit-scrollbar-thumb { background: var(--gold-light); border-radius: 3px; }
-::selection { background: rgba(184, 146, 42, 0.18); }
+::-webkit-scrollbar-thumb { background: var(--pink-light); border-radius: 3px; }
+::selection { background: rgba(232, 121, 166, 0.18); }
 
-/* ---- Ambient Orbs (soft, light) ---- */
+/* ---- Ambient Orbs — GPU accelerated ---- */
 .orb {
   position: fixed;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.35;
+  filter: blur(70px);
+  opacity: 0.3;
   pointer-events: none;
   z-index: 0;
+  will-change: transform;
+  transform: translateZ(0);
 }
 .orb-1 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, #f5e0a0 0%, transparent 70%);
-  top: -150px; right: -150px;
-  animation: orbFloat 16s ease-in-out infinite;
+  width: 460px; height: 460px;
+  background: radial-gradient(circle, #f9a8d4 0%, transparent 70%);
+  top: -140px; right: -140px;
+  animation: orbFloat 18s ease-in-out infinite;
 }
 .orb-2 {
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, #f8d5de 0%, transparent 70%);
-  bottom: -120px; left: -120px;
-  animation: orbFloat 20s ease-in-out infinite reverse;
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, #fce7f3 0%, transparent 70%);
+  bottom: -110px; left: -110px;
+  animation: orbFloat 22s ease-in-out infinite reverse;
 }
 .orb-3 {
-  width: 300px; height: 300px;
+  width: 280px; height: 280px;
   background: radial-gradient(circle, #ead5f5 0%, transparent 70%);
   top: 40%; left: 50%;
-  transform: translate(-50%, -50%);
-  animation: orbFloat 24s ease-in-out infinite 4s;
+  transform: translate(-50%, -50%) translateZ(0);
+  animation: orbFloat3 26s ease-in-out infinite 4s;
 }
 
-/* ---- Glass Card (light variant) ---- */
+/* ---- Glass Card ---- */
 .glass-card {
   background: var(--card-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--card-border);
   border-radius: var(--radius);
   box-shadow: var(--card-shadow);
 }
 
-/* ---- Gold divider ---- */
+/* ---- Pink Divider ---- */
 .gold-divider {
   display: block;
   width: 80px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+  background: linear-gradient(90deg, transparent, var(--pink-light), transparent);
   margin: 0.8rem auto;
   border-radius: 1px;
 }
 
-/* ---- Primary Button (gold) ---- */
-.btn-gold {
-  background: linear-gradient(135deg, #8b6914, var(--gold), var(--gold-light));
-  color: var(--warm-white);
+/* ---- Primary Button (pink) ---- */
+.btn-gold,
+.btn-pink {
+  background: linear-gradient(135deg, var(--blush-deep), var(--rose), var(--pink));
+  color: #fff;
   border: none;
   padding: 0.9rem 2.8rem;
   border-radius: 50px;
   font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   cursor: pointer;
   transition: var(--transition);
-  box-shadow: 0 4px 20px rgba(184, 146, 42, 0.38);
+  box-shadow: 0 4px 20px rgba(232, 121, 166, 0.38);
   position: relative;
   overflow: hidden;
   min-height: 48px;
   text-transform: uppercase;
+  will-change: transform;
 }
-.btn-gold::before {
+.btn-gold::before,
+.btn-pink::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -146,19 +158,22 @@ body {
   opacity: 0;
   transition: opacity 0.3s;
 }
-.btn-gold:hover {
+.btn-gold:hover,
+.btn-pink:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(184, 146, 42, 0.52);
+  box-shadow: 0 8px 32px rgba(232, 121, 166, 0.55);
 }
-.btn-gold:hover::before { opacity: 1; }
-.btn-gold:active { transform: translateY(0); }
+.btn-gold:hover::before,
+.btn-pink:hover::before { opacity: 1; }
+.btn-gold:active,
+.btn-pink:active { transform: translateY(0); }
 
 /* ---- Back Button ---- */
 .back-btn {
   position: fixed;
   top: 1.5rem; left: 1.5rem;
   z-index: 100;
-  background: rgba(253, 247, 240, 0.85);
+  background: rgba(253, 244, 249, 0.88);
   border: 1px solid var(--card-border);
   color: var(--text-mid);
   padding: 0.6rem 1.3rem;
@@ -171,30 +186,33 @@ body {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
   transition: var(--transition);
-  box-shadow: 0 2px 12px rgba(184, 146, 42, 0.1);
+  box-shadow: 0 2px 12px rgba(232, 121, 166, 0.1);
+  will-change: transform;
 }
 .back-btn:hover {
-  background: rgba(253, 247, 240, 0.98);
-  border-color: var(--gold-light);
-  color: var(--gold);
+  background: rgba(253, 244, 249, 0.98);
+  border-color: var(--pink-light);
+  color: var(--pink);
   transform: translateX(-4px);
-  box-shadow: 0 4px 18px rgba(184, 146, 42, 0.2);
+  box-shadow: 0 4px 18px rgba(232, 121, 166, 0.22);
 }
 
 /* ---- Typography Helpers ---- */
 .page-title {
   font-family: var(--font-romantic);
   font-size: clamp(2.8rem, 7vw, 5rem);
-  color: var(--text-dark);
   text-align: center;
-  line-height: 1.15;
-  background: linear-gradient(135deg, #6b4535, var(--gold), #8b6914);
+  /* Extra padding so ascenders/descenders of cursive fonts aren't clipped */
+  line-height: 1.55;
+  padding-top: 0.2em;
+  padding-bottom: 0.05em;
+  overflow: visible;
+  background: linear-gradient(135deg, var(--pink-deep), var(--rose), var(--pink));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 2px 8px rgba(184, 146, 42, 0.2));
 }
 .page-subtitle {
   font-size: 0.8rem;
@@ -209,15 +227,15 @@ body {
 /* ---- Petal fall animation ---- */
 @keyframes petalFall {
   0%   { transform: translateY(-40px) translateX(0) rotate(0deg); opacity: 0; }
-  5%   { opacity: 1; }
-  95%  { opacity: 0.6; }
+  5%   { opacity: 0.7; }
+  95%  { opacity: 0.35; }
   100% { transform: translateY(110vh) translateX(var(--drift, 30px)) rotate(360deg); opacity: 0; }
 }
 
 /* ---- Core Animations ---- */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-10px); }
+  0%, 100% { transform: translateY(0) translateZ(0); }
+  50%       { transform: translateY(-10px) translateZ(0); }
 }
 @keyframes heartbeat {
   0%, 100% { transform: scale(1); }
@@ -239,9 +257,14 @@ body {
   40%, 80% { transform: translateX(8px); }
 }
 @keyframes orbFloat {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%       { transform: translate(25px, -18px) scale(1.04); }
-  66%       { transform: translate(-18px, 12px) scale(0.97); }
+  0%, 100% { transform: translate(0, 0) translateZ(0); }
+  33%       { transform: translate(20px, -15px) translateZ(0); }
+  66%       { transform: translate(-15px, 10px) translateZ(0); }
+}
+@keyframes orbFloat3 {
+  0%, 100% { transform: translate(-50%, -50%) translateZ(0); }
+  33%       { transform: translate(calc(-50% + 18px), calc(-50% - 14px)) translateZ(0); }
+  66%       { transform: translate(calc(-50% - 14px), calc(-50% + 10px)) translateZ(0); }
 }
 @keyframes spin {
   from { transform: rotate(0deg); }
@@ -251,9 +274,13 @@ body {
   0%   { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
-@keyframes pulseGold {
-  0%, 100% { box-shadow: 0 0 20px rgba(184,146,42,0.2), 0 0 40px rgba(212,168,83,0.1); }
-  50%       { box-shadow: 0 0 40px rgba(184,146,42,0.45), 0 0 80px rgba(212,168,83,0.22); }
+@keyframes pulsePink {
+  0%, 100% { box-shadow: 0 0 20px rgba(232,121,166,0.2), 0 0 40px rgba(244,114,182,0.08); }
+  50%       { box-shadow: 0 0 40px rgba(232,121,166,0.45), 0 0 80px rgba(244,114,182,0.2); }
+}
+@keyframes pulseGold { /* kept for compatibility */
+  0%, 100% { box-shadow: 0 0 20px rgba(232,121,166,0.2), 0 0 40px rgba(244,114,182,0.08); }
+  50%       { box-shadow: 0 0 40px rgba(232,121,166,0.45), 0 0 80px rgba(244,114,182,0.2); }
 }
 @keyframes kenBurns1 {
   0%   { transform: scale(1) translate(0, 0); }
@@ -271,11 +298,15 @@ body {
   0%, 100% { transform: rotate(-2deg) scaleX(1); }
   50%       { transform: rotate(2deg) scaleX(1.02); }
 }
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(232,121,166,0.3), 0 0 40px rgba(249,168,201,0.15); }
+  50%       { box-shadow: 0 0 40px rgba(232,121,166,0.7), 0 0 80px rgba(249,168,201,0.3); }
+}
 
 /* ---- Utility ---- */
 .animate-float     { animation: float 4.5s ease-in-out infinite; }
 .animate-heartbeat { animation: heartbeat 1.6s ease-in-out infinite; }
-.animate-glow      { animation: pulseGold 2.8s ease-in-out infinite; }
+.animate-glow      { animation: pulsePink 2.8s ease-in-out infinite; }
 .hidden            { display: none !important; }
 
 /* ---- Explosion particles ---- */
