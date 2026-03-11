@@ -8,11 +8,11 @@ let messagePool = [];
 let photosReady = false;
 
 const MSG_COLORS = [
-  'rgba(240,217,146,0.85)',
+  'rgba(252,231,243,0.88)',
+  'rgba(255,240,248,0.90)',
+  'rgba(240,232,255,0.85)',
+  'rgba(232,244,255,0.85)',
   'rgba(255,245,220,0.88)',
-  'rgba(252,232,236,0.82)',
-  'rgba(240,232,255,0.82)',
-  'rgba(220,240,232,0.82)',
 ];
 
 let idCounter = 0;
@@ -76,9 +76,7 @@ function PetalCanvas() {
         ctx.rotate(f.wobble);
         ctx.beginPath();
         ctx.ellipse(0, 0, f.r, f.r * 1.6, 0, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(220, 180, 140, ${f.op})`;
-        ctx.shadowBlur = 4;
-        ctx.shadowColor = `rgba(184,146,42,0.15)`;
+        ctx.fillStyle = `rgba(244, 114, 182, ${f.op})`;
         ctx.fill();
         ctx.restore();
       });
@@ -99,8 +97,11 @@ function PetalCanvas() {
 function FallingItem({ item, onEnd, onPhotoClick }) {
   const style = {
     left: item.left,
+    animationName:     'fallingItem',
     animationDuration: `${item.duration}s`,
-    animationDelay: `${item.delay}s`,
+    animationDelay:    `${item.delay}s`,
+    animationFillMode: 'both',
+    animationTimingFunction: 'linear',
     '--rot':   `${item.rot}deg`,
     '--rot2':  `${item.rot2}deg`,
     '--drift': `${item.drift}px`,
