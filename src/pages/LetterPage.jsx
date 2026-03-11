@@ -45,12 +45,6 @@ function LetterModal({ letter, onClose, onEdit }) {
             <h2 className="modal-title">{letter.title}</h2>
           </div>
         </div>
-        {letter.pill && (
-          <blockquote className="pill-quote" style={{ borderColor: letter.textColor }}>
-            <span className="pill-icon">💌</span>
-            <p>{letter.pill}</p>
-          </blockquote>
-        )}
         <div className="modal-body">
           {letter.content.split('\n').map((line, i) =>
             line.trim() ? <p key={i} className="modal-line">{line}</p> : <br key={i} />
@@ -76,7 +70,6 @@ function EditLetterModal({ letter, onSave, onClose }) {
     icon:    letter.icon   || '💌',
     tag:     letter.tag    || '',
     title:   letter.title  || '',
-    pill:    letter.pill   || '',
     content: letter.content || '',
   });
   const [saving, setSaving] = useState(false);
@@ -101,7 +94,7 @@ function EditLetterModal({ letter, onSave, onClose }) {
       tag:     form.tag.trim() || (form.author === 'Anh' ? 'Từ anh' : 'Từ em'),
       title:   form.title.trim(),
       size:    form.content.length > 150 ? 'large' : form.content.length > 80 ? 'medium' : 'small',
-      pill:    form.pill.trim() || null,
+      pill:    null,
       content: form.content.trim(),
     };
     await onSave(updated);
@@ -147,11 +140,6 @@ function EditLetterModal({ letter, onSave, onClose }) {
               value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} maxLength={60} required />
           </div>
           <div className="form-field">
-            <label className="form-label">Trích dẫn (nếu có)</label>
-            <input className="form-input" placeholder="Một câu đặc biệt..."
-              value={form.pill} onChange={e => setForm(f => ({ ...f, pill: e.target.value }))} />
-          </div>
-          <div className="form-field">
             <label className="form-label">Nội dung *</label>
             <textarea className="form-textarea" placeholder="Viết điều bạn muốn nói..."
               value={form.content} onChange={e => setForm(f => ({ ...f, content: e.target.value }))} rows={5} required />
@@ -172,7 +160,7 @@ function EditLetterModal({ letter, onSave, onClose }) {
 function AddLetterModal({ onAdd, onClose }) {
   const overlayRef = useRef(null);
   const formRef    = useRef(null);
-  const [form, setForm] = useState({ author: 'Anh', icon: '💌', tag: '', title: '', pill: '', content: '' });
+  const [form, setForm] = useState({ author: 'Anh', icon: '💌', tag: '', title: '', content: '' });
 
   useEffect(() => {
     gsap.from(overlayRef.current, { opacity: 0, duration: 0.25 });
@@ -197,7 +185,7 @@ function AddLetterModal({ onAdd, onClose }) {
       textColor: colorPick.text,
       rotation:  ROTATIONS[Math.floor(Math.random() * ROTATIONS.length)],
       size:      form.content.length > 150 ? 'large' : form.content.length > 80 ? 'medium' : 'small',
-      pill:      form.pill.trim() || null,
+      pill:      null,
       content:   form.content.trim(),
     });
     close();
@@ -242,11 +230,6 @@ function AddLetterModal({ onAdd, onClose }) {
               value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} maxLength={60} required />
           </div>
           <div className="form-field">
-            <label className="form-label">Trích dẫn (nếu có)</label>
-            <input className="form-input" placeholder="Một câu đặc biệt..."
-              value={form.pill} onChange={e => setForm(f => ({ ...f, pill: e.target.value }))} />
-          </div>
-          <div className="form-field">
             <label className="form-label">Nội dung *</label>
             <textarea className="form-textarea" placeholder="Viết điều bạn muốn nói..."
               value={form.content} onChange={e => setForm(f => ({ ...f, content: e.target.value }))} rows={5} required />
@@ -275,7 +258,15 @@ export default function LetterPage() {
 
   useEffect(() => {
     getLetters()
-      .then(setLetters)
+      .then(data => {
+        // Assign deterministic rotation if DB doesn't have one
+        setLetters(data.map(l => ({
+          ...l,
+          rotation: (l.rotation != null && !isNaN(l.rotation))
+            ? l.rotation
+            : ROTATIONS[Math.abs(l.id) % ROTATIONS.length],
+        })));
+      })
       .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
@@ -371,9 +362,6 @@ export default function LetterPage() {
                 </span>
               </div>
               <h3 className="card-heading">{letter.title}</h3>
-              {letter.pill && (
-                <p className="card-pill-preview">❝ {letter.pill.slice(0, 55)}{letter.pill.length > 55 ? '...' : ''} ❞</p>
-              )}
               <p className="card-preview">{letter.content.slice(0, 70)}...</p>
               <span className="card-read-more" style={{ color: letter.textColor }}>Đọc thêm →</span>
             </div>

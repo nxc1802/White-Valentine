@@ -90,14 +90,13 @@
 
 .strip-img {
   width: 160px;
-  height: 200px;
-  object-fit: cover;
+  height: auto;       /* natural height — shows full photobooth strip */
   display: block;
   border-radius: 4px;
   border: 4px solid rgba(255,253,248,0.95);
   box-shadow:
     0 4px 18px rgba(0,0,0,0.1),
-    0 1px 6px rgba(184,146,42,0.08),
+    0 1px 6px rgba(232,121,166,0.08),
     inset 0 1px 2px rgba(255,255,255,0.5);
   transition: box-shadow 0.3s;
 }
@@ -202,5 +201,5 @@
 @media (max-width: 600px) {
   .pb-gallery { gap: 1.2rem; }
   .pb-strip { width: 130px; }
-  .strip-img { width: 130px; height: 160px; }
+  .strip-img { width: 130px; height: auto; }
 }
