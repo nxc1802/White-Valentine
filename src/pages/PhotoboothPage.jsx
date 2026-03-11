@@ -1,0 +1,149 @@
+import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import '../styles/photobooth.css';
+import { getPhotos } from '../lib/prefetch';
+
+const STRIP_CONFIG = [
+  { rot: -2.5, swayDur: 5.2, swayDelay: 0 },
+  { rot:  1.8, swayDur: 6.1, swayDelay: 0.8 },
+  { rot: -1.2, swayDur: 4.8, swayDelay: 1.5 },
+  { rot:  3.0, swayDur: 5.7, swayDelay: 0.4 },
+  { rot: -3.5, swayDur: 6.4, swayDelay: 1.1 },
+  { rot:  2.2, swayDur: 5.0, swayDelay: 1.9 },
+];
+
+const BG_ICONS = ['🌸', '🌺', '✨', '🌷', '💛', '🤍', '⭐', '🌼'];
+
+function PetalsBg() {
+  const petals = Array.from({ length: 22 }, (_, i) => ({
+    id: i,
+    icon: BG_ICONS[i % BG_ICONS.length],
+    left: `${(i / 22) * 100}%`,
+    size: `${0.6 + Math.random() * 0.8}rem`,
+    dur:  `${13 + Math.random() * 12}s`,
+    delay:`${Math.random() * 12}s`,
+    drift:`${Math.random() * 70 - 35}px`,
+    opacity: 0.18 + Math.random() * 0.28,
+  }));
+  return (
+    <div className="pb-petals-bg" aria-hidden>
+      {petals.map(p => (
+        <span key={p.id} className="pb-petal" style={{
+          left: p.left, fontSize: p.size,
+          animationDuration: p.dur, animationDelay: p.delay,
+          '--drift': p.drift, opacity: p.opacity,
+        }}>{p.icon}</span>
+      ))}
+    </div>
+  );
+}
+
+function Lightbox({ src, idx, total, onPrev, onNext, onClose }) {
+  const overlayRef = useRef(null);
+  const imgRef     = useRef(null);
+
+  useEffect(() => {
+    gsap.from(overlayRef.current, { opacity: 0, duration: 0.22 });
+    gsap.from(imgRef.current, { opacity: 0, scale: 0.88, duration: 0.38, ease: 'back.out(1.5)' });
+  }, []);
+
+  function close() { gsap.to(overlayRef.current, { opacity: 0, duration: 0.2, onComplete: onClose }); }
+
+  useEffect(() => {
+    function handleKey(e) {
+      if (e.key === 'ArrowLeft')  onPrev();
+      if (e.key === 'ArrowRight') onNext();
+      if (e.key === 'Escape')     close();
+    }
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  });
+
+  return (
+    <div className="pb-lightbox" ref={overlayRef} onClick={close}>
+      <div className="pb-lightbox-inner" onClick={e => e.stopPropagation()} ref={imgRef}>
+        <img src={src} alt="Phóng to" />
+        <button className="pb-lb-close" onClick={close}>✕</button>
+        <button className="pb-lb-nav pb-lb-prev" onClick={e => { e.stopPropagation(); onPrev(); }}>‹</button>
+        <button className="pb-lb-nav pb-lb-next" onClick={e => { e.stopPropagation(); onNext(); }}>›</button>
+        <div className="pb-lb-counter">{idx + 1} / {total}</div>
+      </div>
+    </div>
+  );
+}
+
+export default function PhotoboothPage() {
+  const headerRef  = useRef(null);
+  const stripsRef  = useRef([]);
+  const [photos, setPhotos]         = useState([]);
+  const [loading, setLoading]       = useState(true);
+  const [lightboxIdx, setLightboxIdx] = useState(null);
+
+  useEffect(() => {
+    getPhotos().then(data => {
+      setPhotos((data ?? []).filter(p => p.category === 'photobooth').map(p => p.src));
+      setLoading(false);
+    }).catch(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    gsap.from(headerRef.current, { opacity: 0, y: -40, duration: 0.9, ease: 'power3.out' });
+    stripsRef.current.forEach((el, i) => {
+      if (!el) return;
+      gsap.from(el, {
+        opacity: 0, x: i % 2 === 0 ? -80 : 80, y: -40, rotate: 0,
+        duration: 0.75, delay: 0.3 + i * 0.12, ease: 'back.out(1.4)',
+      });
+    });
+  }, []);
+
+  return (
+    <div className="photobooth-page">
+      <div className="orb orb-1" /><div className="orb orb-2" />
+      <div className="pb-bg" />
+      <PetalsBg />
+      <Link to="/home" className="back-btn">← Back</Link>
+
+      <div className="pb-header" ref={headerRef}>
+        <div className="pb-camera-icon">📷</div>
+        <h1 className="page-title">Photo Booth</h1>
+        <p className="page-subtitle">Những khoảnh khắc chụp cùng nhau 🎞️</p>
+        <span className="gold-divider" />
+      </div>
+
+      <div className="pb-gallery">
+        {loading && <p className="pb-loading">Đang tải ảnh... 🎞️</p>}
+        {!loading && photos.length === 0 && <p className="pb-loading">Chưa có ảnh nào 📷</p>}
+        {photos.map((src, i) => {
+          const cfg = STRIP_CONFIG[i % STRIP_CONFIG.length];
+          return (
+            <div key={i} className="pb-strip"
+              ref={el => stripsRef.current[i] = el}
+              style={{ '--rot': `${cfg.rot}deg`, '--sway-dur': `${cfg.swayDur}s`, '--sway-delay': `${cfg.swayDelay}s` }}
+              onClick={() => setLightboxIdx(i)}>
+              <img src={src} alt={`Photo ${i + 1}`} loading="lazy" className="strip-img" />
+              <div className="strip-badge">📸 {String(i + 1).padStart(2, '0')}</div>
+              <div className="strip-shine" />
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="pb-footer">
+        <span className="pb-footer-text">🎞️ Every frame is a memory worth keeping</span>
+      </div>
+
+      {lightboxIdx !== null && (
+        <Lightbox
+          src={photos[lightboxIdx]}
+          idx={lightboxIdx}
+          total={photos.length}
+          onPrev={() => setLightboxIdx(i => (i - 1 + photos.length) % photos.length)}
+          onNext={() => setLightboxIdx(i => (i + 1) % photos.length)}
+          onClose={() => setLightboxIdx(null)}
+        />
+      )}
+    </div>
+  );
+}
