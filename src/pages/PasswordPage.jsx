@@ -167,7 +167,7 @@ export default function PasswordPage() {
         </div>
 
         <h1 className="pw-title">For My Love</h1>
-        <p className="pw-subtitle">Nhập mật khẩu để mở hộp quà của em 🤍</p>
+        <p className="pw-subtitle">Nhập mật khẩu để mở hộp quà của Linh 🤍</p>
 
         <form className="pw-form" onSubmit={handleSubmit}>
           <div className="pw-input-wrap">

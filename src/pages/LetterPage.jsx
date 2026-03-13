@@ -110,11 +110,11 @@ function EditLetterModal({ letter, onSave, onClose }) {
           <div className="form-field">
             <label className="form-label">Ai đang viết?</label>
             <div className="author-selector">
-              {['Anh', 'Em'].map(a => (
+              {['Đạt', 'Linh'].map(a => (
                 <button key={a} type="button"
-                  className={`author-btn ${form.author === a ? (a === 'Anh' ? 'selected-anh' : 'selected-em') : ''}`}
+                  className={`author-btn ${form.author === a ? (a === 'Đạt' ? 'selected-anh' : 'selected-em') : ''}`}
                   onClick={() => setForm(f => ({ ...f, author: a }))}>
-                  {a === 'Anh' ? '💙' : '🩷'} {a}
+                  {a === 'Đạt' ? '💙' : '🩷'} {a}
                 </button>
               ))}
             </div>
@@ -200,11 +200,11 @@ function AddLetterModal({ onAdd, onClose }) {
           <div className="form-field">
             <label className="form-label">Ai đang viết?</label>
             <div className="author-selector">
-              {['Anh', 'Em'].map(a => (
+              {['Đạt', 'Linh'].map(a => (
                 <button key={a} type="button"
-                  className={`author-btn ${form.author === a ? (a === 'Anh' ? 'selected-anh' : 'selected-em') : ''}`}
+                  className={`author-btn ${form.author === a ? (a === 'Đạt' ? 'selected-anh' : 'selected-em') : ''}`}
                   onClick={() => setForm(f => ({ ...f, author: a }))}>
-                  {a === 'Anh' ? '💙' : '🩷'} {a}
+                  {a === 'Đạt' ? '💙' : '🩷'} {a}
                 </button>
               ))}
             </div>
@@ -329,7 +329,7 @@ export default function LetterPage() {
         <span className="gold-divider" />
         <div className="author-filter" style={{ marginTop: '1rem' }}>
           {['all', 'Đạt', 'Linh'].map(f => (
-            <button key={f} className={`filter-btn ${filter === f ? 'active' : ''}`} onClick={() => setFilter(f)}>
+            <button key={f} className={`filter-btn ${filterAuthor === f ? 'active' : ''}`} onClick={() => setFilterAuthor(f)}>
               {f === 'all' ? '🌸 Tất cả' : f === 'Đạt' ? '💙 Đạt viết' : '🩷 Linh viết'}
             </button>
           ))}
