@@ -65,10 +65,12 @@
 .wish-board {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
-  max-width: 960px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
+  padding-bottom: 4rem;
   position: relative; z-index: 2;
 }
 .wish-loading {
