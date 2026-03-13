@@ -11,7 +11,20 @@ export function prefetchAll() {
   if (!lettersPromise)   lettersPromise   = fetchAllLetters().catch(() => []);
   if (!wishlistPromise)  wishlistPromise  = fetchAllWishlist().catch(() => []);
   if (!passwordsPromise) passwordsPromise = fetchPasswords().catch(() => []);
-  if (!photosPromise)    photosPromise    = fetchPhotos().catch(() => []);
+  if (!photosPromise) {
+    photosPromise = fetchPhotos().catch(() => []);
+    // Preload image files for instant display
+    photosPromise.then(data => {
+      if (data && Array.isArray(data)) {
+        data.forEach(p => {
+          if (p.src) {
+            const img = new Image();
+            img.src = p.src;
+          }
+        });
+      }
+    });
+  }
   if (!songsPromise)     songsPromise     = fetchSongs().catch(() => []);
   if (!messagesPromise)  messagesPromise  = fetchGiftMessages().catch(() => []);
 }
