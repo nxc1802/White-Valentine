@@ -30,7 +30,7 @@ function WishModal({ initial, onSave, onClose }) {
   const isEdit     = !!initial;
   const [form, setForm] = useState(initial
     ? { type: initial.type, author: initial.author, icon: initial.icon, title: initial.title, description: initial.description || '' }
-    : { type: 'gift', author: 'Anh', icon: '🎁', title: '', description: '' }
+    : { type: 'gift', author: 'Đạt', icon: '🎁', title: '', description: '' }
   );
   const [saving, setSaving] = useState(false);
   const icons = form.type === 'gift' ? GIFT_ICONS : EVENT_ICONS;
@@ -72,11 +72,11 @@ function WishModal({ initial, onSave, onClose }) {
           <div className="wish-form-field">
             <label className="wish-form-label">Ai muốn?</label>
             <div className="wish-author-selector">
-              {['Anh', 'Em'].map(a => (
+              {['Đạt', 'Linh'].map(a => (
                 <button key={a} type="button"
-                  className={`wish-author-btn ${form.author === a ? (a === 'Anh' ? 'sel-anh' : 'sel-em') : ''}`}
-                  onClick={() => setForm(f => ({ ...f, author: a }))}>
-                  {a === 'Anh' ? '💙' : '🩷'} {a}
+                  className={`wish-author-btn ${form.author === a ? (a === 'Đạt' ? 'sel-anh' : 'sel-em') : ''}`}
+                  onClick={() => setForm(prev => ({ ...prev, author: a }))}>
+                  {a === 'Đạt' ? '💙' : '🩷'} {a}
                 </button>
               ))}
             </div>
@@ -124,8 +124,8 @@ function WishCard({ item, colorPalette, onToggle, onEdit, onDeleteConfirm, isDel
       <div className="wish-card-deco">{item.type === 'gift' ? '🎀' : '⭐'}</div>
       <div className="wish-card-icon">{item.icon}</div>
       <h3 className="wish-card-title">{item.title}</h3>
-      <span className={`wish-author-badge ${item.author === 'Anh' ? 'badge-anh' : 'badge-em'}`}>
-        {item.author === 'Anh' ? '💙' : '🩷'} {item.author}
+      <span className={`wish-author-badge ${item.author === 'Đạt' ? 'badge-anh' : 'badge-em'}`}>
+        {item.author === 'Đạt' ? '💙' : '🩷'} {item.author}
       </span>
       {item.description && <p className="wish-card-desc">{item.description}</p>}
       <div className="wish-card-actions">

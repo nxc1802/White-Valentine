@@ -38,8 +38,8 @@ function LetterModal({ letter, onClose, onEdit }) {
           <div style={{ flex: 1 }}>
             <div className="modal-meta-row">
               <p className="modal-tag" style={{ color: letter.textColor }}>{letter.tag}</p>
-              <span className={`author-badge ${letter.author === 'Anh' ? 'badge-anh' : 'badge-em'}`}>
-                {letter.author === 'Anh' ? '💙 Anh' : '🩷 Em'}
+              <span className={`author-badge ${letter.author === 'Đạt' ? 'badge-anh' : 'badge-em'}`}>
+                {letter.author === 'Đạt' ? '💙 Đạt' : '🩷 Linh'}
               </span>
             </div>
             <h2 className="modal-title">{letter.title}</h2>
@@ -91,7 +91,7 @@ function EditLetterModal({ letter, onSave, onClose }) {
       ...letter,
       author:  form.author,
       icon:    form.icon,
-      tag:     form.tag.trim() || (form.author === 'Anh' ? 'Từ anh' : 'Từ em'),
+      tag:     form.tag.trim() || (form.author === 'Đạt' ? 'Từ Đạt' : 'Từ Linh'),
       title:   form.title.trim(),
       size:    form.content.length > 150 ? 'large' : form.content.length > 80 ? 'medium' : 'small',
       pill:    null,
@@ -160,7 +160,7 @@ function EditLetterModal({ letter, onSave, onClose }) {
 function AddLetterModal({ onAdd, onClose }) {
   const overlayRef = useRef(null);
   const formRef    = useRef(null);
-  const [form, setForm] = useState({ author: 'Anh', icon: '💌', tag: '', title: '', content: '' });
+  const [form, setForm] = useState({ author: 'Đạt', icon: '💌', tag: '', title: '', content: '' });
 
   useEffect(() => {
     gsap.from(overlayRef.current, { opacity: 0, duration: 0.25 });
@@ -179,7 +179,7 @@ function AddLetterModal({ onAdd, onClose }) {
       id:        Date.now(),
       author:    form.author,
       icon:      form.icon,
-      tag:       form.tag.trim() || (form.author === 'Anh' ? 'Từ anh' : 'Từ em'),
+      tag:       form.tag.trim() || (form.author === 'Đạt' ? 'Từ Đạt' : 'Từ Linh'),
       title:     form.title.trim(),
       color:     colorPick.bg,
       textColor: colorPick.text,
@@ -328,10 +328,9 @@ export default function LetterPage() {
         <p className="page-subtitle">Những tâm sự của hai đứa mình</p>
         <span className="gold-divider" />
         <div className="author-filter" style={{ marginTop: '1rem' }}>
-          {['all', 'Anh', 'Em'].map(f => (
-            <button key={f} className={`filter-tab ${filterAuthor === f ? 'active' : ''}`}
-              onClick={() => setFilterAuthor(f)}>
-              {f === 'all' ? '🌸 Tất cả' : f === 'Anh' ? '💙 Anh viết' : '🩷 Em viết'}
+          {['all', 'Đạt', 'Linh'].map(f => (
+            <button key={f} className={`filter-btn ${filter === f ? 'active' : ''}`} onClick={() => setFilter(f)}>
+              {f === 'all' ? '🌸 Tất cả' : f === 'Đạt' ? '💙 Đạt viết' : '🩷 Linh viết'}
             </button>
           ))}
         </div>
@@ -357,8 +356,8 @@ export default function LetterPage() {
               <div className="card-tag-row">
                 <span className="card-icon-badge">{letter.icon}</span>
                 <span className="card-tag" style={{ color: letter.textColor }}>{letter.tag}</span>
-                <span className={`author-badge-sm ${letter.author === 'Anh' ? 'badge-anh' : 'badge-em'}`}>
-                  {letter.author === 'Anh' ? '💙' : '🩷'} {letter.author}
+                <span className={`author-badge-sm ${letter.author === 'Đạt' ? 'badge-anh' : 'badge-em'}`}>
+                  {letter.author === 'Đạt' ? '💙' : '🩷'} {letter.author}
                 </span>
               </div>
               <h3 className="card-heading">{letter.title}</h3>

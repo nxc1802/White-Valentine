@@ -393,7 +393,7 @@ function SongModal({ onSave, onClose, uploading }) {
             <form className="admin-modal" onClick={e => e.stopPropagation()} onSubmit={handleSubmit}>
                 <h3>🎵 Thêm Bài Hát</h3>
                 <label>Tên bài hát</label>
-                <input value={title} onChange={e => setTitle(e.target.value)} placeholder="VD: Nơi này có anh" autoFocus />
+                <input value={title} onChange={e => setTitle(e.target.value)} placeholder="VD: Nơi này có Đạt" autoFocus />
                 <label>Nghệ sĩ</label>
                 <input value={artist} onChange={e => setArtist(e.target.value)} placeholder="VD: Sơn Tùng M-TP" />
                 <label>Nguồn nhạc</label>

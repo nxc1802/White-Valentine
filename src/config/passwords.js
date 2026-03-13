@@ -22,7 +22,7 @@ export const PASSWORDS = [
   },
   {
     password: '18022004',
-    hint: 'Ngày sinh nhật của anh 💛',
+    hint: 'Ngày sinh nhật của Đạt 💛',
   },
   {
     password: '06022009',
@@ -34,7 +34,7 @@ export const PASSWORDS = [
   },
   {
     password: 'nguyenxuancuong',
-    hint: 'Họ và tên của anh... viết liền, không dấu 🌺',
+    hint: 'Họ và tên của Đạt... viết liền, không dấu 🌺',
   },
   {
     password: 'valentintrang',

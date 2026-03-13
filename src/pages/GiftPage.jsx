@@ -232,9 +232,9 @@ export default function GiftPage() {
           <h1 className="gift-title">Happy White Valentine</h1>
           <p className="gift-date">14 Tháng 3 · 2026</p>
           <p className="gift-message">
-            Trang web nhỏ này là trái tim của anh,<br />
-            được gói ghém cẩn thận để tặng riêng em. 🤍<br />
-            Cảm ơn em đã là ánh sáng của anh mỗi ngày.
+            Trang web nhỏ này là trái tim của Đạt,<br />
+            được gói ghém cẩn thận để tặng riêng Linh. 🤍<br />
+            Cảm ơn Linh đã là ánh sáng của Đạt mỗi ngày.
           </p>
           <div className="gift-hearts">
             {['🤍', '💛', '🤍'].map((e, i) => (
