@@ -91,8 +91,8 @@ export default function GalleryPage() {
       <Link to="/home" className="back-btn">← Back</Link>
 
       <header className="gallery-header" ref={headerRef}>
-        <h1 className="page-title">Kỷ Niệm</h1>
-        <p className="page-subtitle">{photos.length} khoảnh khắc đáng nhớ</p>
+        <h1 className="page-title">Our Memories</h1>
+        <p className="page-subtitle">{photos.length} moments we cherish</p>
         <span className="gold-divider" />
         <div className="gallery-tabs" style={{ marginTop: '1rem' }}>
           {[['all', 'All Photos ❤️'], ['solo', 'Linh 🌸'], ['couple', 'Both 💕']].map(([val, label]) => (

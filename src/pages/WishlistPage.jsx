@@ -249,8 +249,8 @@ export default function WishlistPage() {
       <Link to="/home" className="back-btn">← Back</Link>
 
       <div className="wish-header" ref={headerRef}>
-        <h1 className="page-title">Danh Sách Ước Mơ ✨</h1>
-        <p className="page-subtitle">Những điều Đạt và Linh muốn thực hiện cùng nhau 🤍</p>
+        <h1 className="page-title">Our Wishlist ✨</h1>
+        <p className="page-subtitle">Things Đạt and Linh want to do together 🤍</p>
         <span className="gold-divider" />
         <div className="wish-tabs" style={{ marginTop: '1rem' }}>
           <button className={`wish-tab ${activeTab === 'gift' ? 'active' : ''}`} onClick={() => setTab('gift')}>
@@ -265,7 +265,7 @@ export default function WishlistPage() {
       </div>
 
       <div className="wish-board" ref={boardRef}>
-        {loading && <div className="wish-loading">Đang tải... ✨</div>}
+        {loading && <div className="wish-loading">Loading wishlist... ✨</div>}
         {displayed.map(item => (
           <div key={item.id}
             onMouseDown={() => startLongPress(item.id)}

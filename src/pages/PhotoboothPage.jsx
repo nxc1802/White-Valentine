@@ -108,13 +108,13 @@ export default function PhotoboothPage() {
       <div className="pb-header" ref={headerRef}>
         <div className="pb-camera-icon">📷</div>
         <h1 className="page-title">Photo Booth</h1>
-        <p className="page-subtitle">Những khoảnh khắc chụp cùng nhau 🎞️</p>
+        <p className="page-subtitle">Our moments captured together 🎞️</p>
         <span className="gold-divider" />
       </div>
 
       <div className="pb-gallery">
-        {loading && <p className="pb-loading">Đang tải ảnh... 🎞️</p>}
-        {!loading && photos.length === 0 && <p className="pb-loading">Chưa có ảnh nào 📷</p>}
+        {loading && <p className="pb-loading">Loading photos... 🎞️</p>}
+        {!loading && photos.length === 0 && <p className="pb-loading">No photos yet 📷</p>}
         {photos.map((src, i) => {
           const cfg = STRIP_CONFIG[i % STRIP_CONFIG.length];
           return (

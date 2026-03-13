@@ -135,7 +135,7 @@ export default function MusicPage() {
       <Link to="/home" className="back-btn">← Back</Link>
 
       <header className="music-header" ref={headerRef}>
-        <h1 className="page-title">Giai Điệu Tình Yêu</h1>
+        <h1 className="page-title">Love Songs</h1>
         <p className="page-subtitle">Songs that bloom like white roses 🌹</p>
         <span className="gold-divider" />
       </header>
@@ -156,8 +156,8 @@ export default function MusicPage() {
         </div>
 
         <div className="np-info">
-          <h2 className="np-title">{currentSong?.title ?? 'Chọn một bài hát'}</h2>
-          <p className="np-artist">{currentSong?.artist ?? '— chạm vào bài hát bên dưới để nghe —'}</p>
+          <h2 className="np-title">{currentSong?.title ?? 'Select a song'}</h2>
+          <p className="np-artist">{currentSong?.artist ?? '— tap a song below to play —'}</p>
           <div className="progress-wrap">
             <span className="time-label">{formatTime(currentTime)}</span>
             <div className="progress-bar" onClick={handleProgressClick}>

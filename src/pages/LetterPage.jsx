@@ -328,10 +328,10 @@ export default function LetterPage() {
       <div className="board-header">
         <div className="board-title-row">
           <span className="board-title-icon">💌</span>
-          <h1 className="page-title">Thư Tình</h1>
+          <h1 className="page-title">Love Letters</h1>
           <span className="board-title-icon">💌</span>
         </div>
-        <p className="page-subtitle">Những tâm sự của Đạt và Linh</p>
+        <p className="page-subtitle">Heartfelt words from Đạt and Linh</p>
         <span className="gold-divider" />
         <div className="author-filter" style={{ marginTop: '1rem' }}>
           {['all', 'Đạt', 'Linh'].map(f => (
