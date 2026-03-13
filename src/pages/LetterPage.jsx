@@ -260,12 +260,18 @@ export default function LetterPage() {
     getLetters()
       .then(data => {
         // Assign deterministic rotation if DB doesn't have one
-        setLetters(data.map(l => ({
-          ...l,
-          rotation: (l.rotation != null && !isNaN(l.rotation))
-            ? l.rotation
-            : ROTATIONS[Math.abs(l.id) % ROTATIONS.length],
-        })));
+        setLetters(data.map(l => {
+          let author = l.author;
+          if (author === 'Anh') author = 'Đạt';
+          if (author === 'Em')  author = 'Linh';
+          return {
+            ...l,
+            author,
+            rotation: (l.rotation != null && !isNaN(l.rotation))
+              ? l.rotation
+              : ROTATIONS[Math.abs(l.id) % ROTATIONS.length],
+          };
+        }));
       })
       .catch(console.error)
       .finally(() => setLoading(false));
@@ -329,7 +335,7 @@ export default function LetterPage() {
         <span className="gold-divider" />
         <div className="author-filter" style={{ marginTop: '1rem' }}>
           {['all', 'Đạt', 'Linh'].map(f => (
-            <button key={f} className={`filter-btn ${filterAuthor === f ? 'active' : ''}`} onClick={() => setFilterAuthor(f)}>
+            <button key={f} className={`filter-tab ${filterAuthor === f ? 'active' : ''}`} onClick={() => setFilterAuthor(f)}>
               {f === 'all' ? '🌸 Tất cả' : f === 'Đạt' ? '💙 Đạt viết' : '🩷 Linh viết'}
             </button>
           ))}

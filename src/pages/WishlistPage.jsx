@@ -234,7 +234,7 @@ export default function WishlistPage() {
 
       <div className="wish-header" ref={headerRef}>
         <h1 className="page-title">Danh Sách Ước Mơ ✨</h1>
-        <p className="page-subtitle">Những điều mình muốn nhận và trải nghiệm cùng nhau</p>
+        <p className="page-subtitle">Những điều chúng mỉnh muốn cùng nhau thực hiện 🤍</p>
         <span className="gold-divider" />
         <div className="wish-tabs" style={{ marginTop: '1rem' }}>
           <button className={`wish-tab ${activeTab === 'gift' ? 'active' : ''}`} onClick={() => setTab('gift')}>

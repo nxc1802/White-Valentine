@@ -95,7 +95,7 @@ export default function GalleryPage() {
         <p className="page-subtitle">{photos.length} khoảnh khắc đáng nhớ</p>
         <span className="gold-divider" />
         <div className="gallery-tabs" style={{ marginTop: '1rem' }}>
-          {[['all', 'Tất cả ❤️'], ['solo', 'Ảnh em 🌸'], ['couple', 'Hai đứa 💕']].map(([val, label]) => (
+          {[['all', 'Tất cả ❤️'], ['solo', 'Ảnh Linh 🌸'], ['couple', 'Chúng mình 💕']].map(([val, label]) => (
             <button key={val} className={`tab-btn ${filter === val ? 'active' : ''}`}
               onClick={() => setFilter(val)}>{label}</button>
           ))}
@@ -109,9 +109,9 @@ export default function GalleryPage() {
           <div className="gallery-loading">Chưa có ảnh nào 🌷</div>
         ) : (
           <>
-            <MarqueeRow photos={row1} direction="left"  speed={5}   rowHeight={230} onPhotoClick={openLightbox} />
-            <MarqueeRow photos={row2} direction="right" speed={6}   rowHeight={200} onPhotoClick={openLightbox} />
-            <MarqueeRow photos={row3} direction="left"  speed={4.5} rowHeight={215} onPhotoClick={openLightbox} />
+            <MarqueeRow photos={row1} direction="left"  speed={5}   rowHeight={138} onPhotoClick={openLightbox} />
+            <MarqueeRow photos={row2} direction="right" speed={6}   rowHeight={120} onPhotoClick={openLightbox} />
+            <MarqueeRow photos={row3} direction="left"  speed={4.5} rowHeight={129} onPhotoClick={openLightbox} />
           </>
         )}
       </div>
