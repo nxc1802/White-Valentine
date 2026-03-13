@@ -9,7 +9,7 @@ const CARDS = [
   { to: '/gallery',    icon: '🖼️', title: 'Our Memories', desc: 'Những khoảnh khắc mình sẽ không bao giờ quên', color: 'card-gallery' },
   { to: '/photobooth', icon: '📷', title: 'Photobooth',   desc: 'Ảnh booth chụp cùng nhau 🎞️',             color: 'card-photobooth' },
   { to: '/wishlist',   icon: '✨', title: 'Điều Ước',     desc: 'Những điều mình muốn cùng nhau thực hiện', color: 'card-wishlist' },
-  { to: '/gift',       icon: '🎁', title: 'Quà Valentine',desc: 'Có gì đó thật đặc biệt đang chờ em...',    color: 'card-gift', special: true },
+  { to: '/gift',       icon: '🎁', title: 'Quà Valentine',desc: 'Có gì đó thật đặc biệt đang chờ Linh...',    color: 'card-gift', special: true },
 ];
 
 const PETAL_ICONS = ['🌸', '🌺', '🌷', '✨', '💮', '💕'];
@@ -78,7 +78,7 @@ export default function HomePage() {
           Valentine Trắng · 14 tháng 3, 2026
           <span>🤍</span>
         </div>
-        <h1 className="page-title home-title">Hộp Quà Của Em</h1>
+        <h1 className="page-title home-title">Hộp Quà Của Linh</h1>
         <p className="home-subtitle">A little piece of my heart, made just for you</p>
         <div className="home-divider">
           <span className="home-divider-line" />
