@@ -4,12 +4,12 @@ import gsap from 'gsap';
 import '../styles/home.css';
 
 const CARDS = [
-  { to: '/music',      icon: '🎵', title: 'Our Songs',    desc: 'Melodies of our love',                color: 'card-music' },
-  { to: '/letter',     icon: '💌', title: 'Love Letters', desc: 'Heartfelt messages from Đạt & Linh', color: 'card-letters' },
-  { to: '/gallery',    icon: '🖼️', title: 'Our Memories', desc: 'Moments we will cherish forever', color: 'card-gallery' },
-  { to: '/photobooth', icon: '📷', title: 'Photobooth',   desc: 'Our captures together 🎞️',             color: 'card-photobooth' },
-  { to: '/wishlist',   icon: '✨', title: 'Our Wishes',   desc: 'Things we want to do together', color: 'card-wishlist' },
-  { to: '/gift',       icon: '🎁', title: 'Valentine Gift',desc: 'Something special for Linh...',    color: 'card-gift', special: true },
+  { to: '/music',      icon: '🎵', title: 'Nhạc của chúng mình',    desc: 'Giai điệu tình yêu',                color: 'card-music' },
+  { to: '/letter',     icon: '💌', title: 'Thư tình', desc: 'Những lời nhắn nhủ từ Đạt & Linh', color: 'card-letters' },
+  { to: '/gallery',    icon: '🖼️', title: 'Kỷ niệm', desc: 'Những khoảnh khắc đáng nhớ', color: 'card-gallery' },
+  { to: '/photobooth', icon: '📷', title: 'Phòng chụp ảnh',   desc: 'Những bức ảnh chụp chung 🎞️',             color: 'card-photobooth' },
+  { to: '/wishlist',   icon: '✨', title: 'Điều ước',   desc: 'Những việc chúng mình muốn làm cùng nhau', color: 'card-wishlist' },
+  { to: '/gift',       icon: '🎁', title: 'Quà Valentine',desc: 'Điều đặc biệt dành riêng cho Linh...',    color: 'card-gift', special: true },
 ];
 
 const PETAL_ICONS = ['🌸', '🌺', '🌷', '✨', '💮', '💕'];
@@ -75,11 +75,11 @@ export default function HomePage() {
       <header className="home-header" ref={headerRef}>
         <div className="home-event-tag">
           <span>🤍</span>
-          White Valentine · March 14, 2026
+          Valentine Trắng · 14 Tháng 3, 2026
           <span>🤍</span>
         </div>
-        <h1 className="page-title home-title">Linh's Gift Box</h1>
-        <p className="home-subtitle">A little piece of my heart, made just for you</p>
+        <h1 className="page-title home-title">Hộp Quà Của Linh</h1>
+        <p className="home-subtitle">Một chút yêu thương dành riêng cho em</p>
         <div className="home-divider">
           <span className="home-divider-line" />
           <span className="home-divider-heart">❋</span>
@@ -96,7 +96,7 @@ export default function HomePage() {
             className={`menu-card ${card.color} ${card.special ? 'card-special' : ''}`}
           >
             <div className="card-glow" />
-            {card.special && <span className="card-badge">Special ✨</span>}
+            {card.special && <span className="card-badge">Đặc biệt ✨</span>}
             <div className="card-icon">{card.icon}</div>
             <div className="card-text-wrap">
               <h2 className="card-title">{card.title}</h2>
@@ -110,9 +110,9 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="home-footer" ref={footerRef}>
         <p>
-          Made with{' '}
+          Được làm với{' '}
           <span className="animate-heartbeat" style={{ display: 'inline-block' }}>🩷</span>
-          {' '}just for you — White Valentine 2026
+          {' '}dành riêng cho em — Valentine Trắng 2026
         </p>
       </footer>
     </div>
