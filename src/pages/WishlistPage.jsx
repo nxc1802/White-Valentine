@@ -254,11 +254,11 @@ export default function WishlistPage() {
         <span className="gold-divider" />
         <div className="wish-tabs" style={{ marginTop: '1rem' }}>
           <button className={`wish-tab ${activeTab === 'gift' ? 'active' : ''}`} onClick={() => setTab('gift')}>
-            🎁 Quà muốn nhận
+            🎁 Wishes
             <span className="wish-tab-badge">{giftDone}/{giftCount}</span>
           </button>
           <button className={`wish-tab ${activeTab === 'event' ? 'active' : ''}`} onClick={() => setTab('event')}>
-            🌟 Kỷ niệm muốn có
+            🌟 Plans
             <span className="wish-tab-badge">{eventDone}/{eventCount}</span>
           </button>
         </div>

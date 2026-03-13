@@ -336,7 +336,7 @@ export default function LetterPage() {
         <div className="author-filter" style={{ marginTop: '1rem' }}>
           {['all', 'Đạt', 'Linh'].map(f => (
             <button key={f} className={`filter-tab ${filterAuthor === f ? 'active' : ''}`} onClick={() => setFilterAuthor(f)}>
-              {f === 'all' ? '🌸 Tất cả' : f === 'Đạt' ? '💙 Đạt viết' : '🩷 Linh viết'}
+              {f === 'all' ? '🌸 All Letters' : f === 'Đạt' ? '💙 From Đạt' : '🩷 From Linh'}
             </button>
           ))}
         </div>
