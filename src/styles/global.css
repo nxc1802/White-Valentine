@@ -49,8 +49,8 @@
   --transition:    all 0.38s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Typography */
-  --font-display:  'Cormorant Garamond', serif;
-  --font-romantic: 'Great Vibes', cursive;
+  --font-display:  'Lora', serif;
+  --font-romantic: 'Dancing Script', cursive;
   --font-title:    'Playfair Display', serif;
   --font-body:     'Nunito', sans-serif;
   --font-script:   'Dancing Script', cursive;
