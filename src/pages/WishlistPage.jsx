@@ -94,7 +94,7 @@ function WishModal({ initial, onSave, onClose }) {
           <div className="wish-form-field">
             <label className="wish-form-label">Tên *</label>
             <input className="wish-form-input" placeholder={form.type === 'gift' ? 'Tên món quà...' : 'Tên sự kiện...'}
-              value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} maxLength={80} required />
+              value={form.title} onChange={e => setForm(f => ({ ...f, title: e.target.value }))} maxLength={80} required autoFocus />
           </div>
           <div className="wish-form-field">
             <label className="wish-form-label">Mô tả (tùy chọn)</label>
@@ -197,7 +197,7 @@ export default function WishlistPage() {
 
   async function handleAdd(form) {
     try {
-      const saved = await insertWishItem(form);
+      const saved = await insertWishItem({ ...form, id: Date.now() });
       setItems(prev => [...prev, saved]);
       invalidateWishlist();
     } catch (err) { 
