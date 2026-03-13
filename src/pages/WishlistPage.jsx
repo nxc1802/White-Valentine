@@ -185,7 +185,16 @@ export default function WishlistPage() {
     if (headerRef.current) gsap.from(headerRef.current, { opacity: 0, y: -30, duration: 0.6, ease: 'power2.out' });
     if (boardRef.current) {
       const cards = boardRef.current.querySelectorAll('.wish-card, .wish-add-card');
-      gsap.from(cards, { opacity: 0, y: 40, scale: 0.92, stagger: 0.07, duration: 0.45, ease: 'back.out(1.3)', delay: 0.15 });
+      gsap.from(cards, { 
+        opacity: 0, 
+        y: 40, 
+        scale: 0.92, 
+        stagger: 0.07, 
+        duration: 0.45, 
+        ease: 'back.out(1.3)', 
+        delay: 0.15,
+        clearProps: "all"
+      });
     }
   }, [loading, activeTab]);
 
