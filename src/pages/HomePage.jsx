@@ -4,12 +4,12 @@ import gsap from 'gsap';
 import '../styles/home.css';
 
 const CARDS = [
-  { to: '/music',      icon: '🎵', title: 'Our Songs',    desc: 'Songs that remind me of us',                color: 'card-music' },
-  { to: '/letter',     icon: '💌', title: 'Thư Tình',     desc: 'Những tâm sự từ trái tim của Đạt và Linh', color: 'card-letters' },
-  { to: '/gallery',    icon: '🖼️', title: 'Our Memories', desc: 'Những khoảnh khắc Đạt và Linh không bao giờ quên', color: 'card-gallery' },
-  { to: '/photobooth', icon: '📷', title: 'Photobooth',   desc: 'Ảnh booth chụp cùng nhau 🎞️',             color: 'card-photobooth' },
-  { to: '/wishlist',   icon: '✨', title: 'Điều Ước',     desc: 'Những điều Đạt và Linh muốn cùng nhau làm', color: 'card-wishlist' },
-  { to: '/gift',       icon: '🎁', title: 'Quà Valentine',desc: 'Có gì đó thật đặc biệt đang chờ Linh...',    color: 'card-gift', special: true },
+  { to: '/music',      icon: '🎵', title: 'Our Songs',    desc: 'Melodies of our love',                color: 'card-music' },
+  { to: '/letter',     icon: '💌', title: 'Love Letters', desc: 'Heartfelt messages from Đạt & Linh', color: 'card-letters' },
+  { to: '/gallery',    icon: '🖼️', title: 'Our Memories', desc: 'Moments we will cherish forever', color: 'card-gallery' },
+  { to: '/photobooth', icon: '📷', title: 'Photobooth',   desc: 'Our captures together 🎞️',             color: 'card-photobooth' },
+  { to: '/wishlist',   icon: '✨', title: 'Our Wishes',   desc: 'Things we want to do together', color: 'card-wishlist' },
+  { to: '/gift',       icon: '🎁', title: 'Valentine Gift',desc: 'Something special for Linh...',    color: 'card-gift', special: true },
 ];
 
 const PETAL_ICONS = ['🌸', '🌺', '🌷', '✨', '💮', '💕'];
@@ -75,10 +75,10 @@ export default function HomePage() {
       <header className="home-header" ref={headerRef}>
         <div className="home-event-tag">
           <span>🤍</span>
-          Valentine Trắng · 14 tháng 3, 2026
+          White Valentine · March 14, 2026
           <span>🤍</span>
         </div>
-        <h1 className="page-title home-title">Hộp Quà Của Linh</h1>
+        <h1 className="page-title home-title">Linh's Gift Box</h1>
         <p className="home-subtitle">A little piece of my heart, made just for you</p>
         <div className="home-divider">
           <span className="home-divider-line" />
