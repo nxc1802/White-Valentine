@@ -6,9 +6,10 @@ import '../styles/home.css';
 const CARDS = [
   { to: '/music',      icon: '🎵', title: 'Our Songs',    desc: 'Songs that remind me of us',                color: 'card-music' },
   { to: '/letter',     icon: '💌', title: 'Thư Tình',     desc: 'Những tâm sự từ trái tim của hai đứa',     color: 'card-letter' },
-  { to: '/gallery',    icon: '🖼️', title: 'Our Memories', desc: 'Những khoảnh khắc mình sẽ không bao giờ quên', color: 'card-gallery' },
+  { to: '/gallery',    icon: '🖼️', title: 'Our Memories', desc: 'Những khoảnh khắc Đạt và Linh không bao giờ quên', color: 'card-gallery' },
+  { to: '/letters',    icon: '💌', title: 'Thư Tình',     desc: 'Những lời gửi gắm từ trái tim', color: 'card-letters' },
   { to: '/photobooth', icon: '📷', title: 'Photobooth',   desc: 'Ảnh booth chụp cùng nhau 🎞️',             color: 'card-photobooth' },
-  { to: '/wishlist',   icon: '✨', title: 'Điều Ước',     desc: 'Những điều mình muốn cùng nhau thực hiện', color: 'card-wishlist' },
+  { to: '/wishlist',   icon: '✨', title: 'Điều Ước',     desc: 'Những điều Đạt và Linh muốn cùng nhau làm', color: 'card-wishlist' },
   { to: '/gift',       icon: '🎁', title: 'Quà Valentine',desc: 'Có gì đó thật đặc biệt đang chờ Linh...',    color: 'card-gift', special: true },
 ];
 

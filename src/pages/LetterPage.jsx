@@ -331,7 +331,7 @@ export default function LetterPage() {
           <h1 className="page-title">Thư Tình</h1>
           <span className="board-title-icon">💌</span>
         </div>
-        <p className="page-subtitle">Những tâm sự của hai đứa mình</p>
+        <p className="page-subtitle">Những tâm sự của Đạt và Linh</p>
         <span className="gold-divider" />
         <div className="author-filter" style={{ marginTop: '1rem' }}>
           {['all', 'Đạt', 'Linh'].map(f => (

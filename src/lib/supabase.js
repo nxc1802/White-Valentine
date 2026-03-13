@@ -73,7 +73,7 @@ export async function fetchAllWishlist() {
 export async function insertWishItem(item) {
   const { data, error } = await supabase
     .from(WISH_TABLE)
-    .insert({ id: item.id, type: item.type, author: item.author, icon: item.icon, title: item.title, description: item.description ?? null, status: 'pending' })
+    .insert({ type: item.type, author: item.author, icon: item.icon, title: item.title, description: item.description ?? null, status: 'pending' })
     .select().single();
   if (error) throw error;
   return mapWish(data);

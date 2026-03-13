@@ -95,7 +95,7 @@ export default function GalleryPage() {
         <p className="page-subtitle">{photos.length} khoảnh khắc đáng nhớ</p>
         <span className="gold-divider" />
         <div className="gallery-tabs" style={{ marginTop: '1rem' }}>
-          {[['all', 'Tất cả ❤️'], ['solo', 'Ảnh Linh 🌸'], ['couple', 'Chúng mình 💕']].map(([val, label]) => (
+          {[['all', 'Tất cả ❤️'], ['solo', 'Ảnh Linh 🌸'], ['couple', 'Đạt và Linh 💕']].map(([val, label]) => (
             <button key={val} className={`tab-btn ${filter === val ? 'active' : ''}`}
               onClick={() => setFilter(val)}>{label}</button>
           ))}

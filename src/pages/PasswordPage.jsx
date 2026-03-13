@@ -176,7 +176,7 @@ export default function PasswordPage() {
               className="pw-input"
               value={password}
               onChange={e => setPassword(e.target.value)}
-              placeholder="Mật khẩu bí mật của mình..."
+              placeholder="Mật khẩu của Đạt và Linh..."
               autoComplete="off"
               spellCheck="false"
               maxLength={30}

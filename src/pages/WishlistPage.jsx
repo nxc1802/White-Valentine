@@ -164,7 +164,20 @@ export default function WishlistPage() {
   const headerRef = useRef(null);
 
   useEffect(() => {
-    getWishlist().then(setItems).catch(console.error).finally(() => setLoading(false));
+    getWishlist()
+      .then(data => {
+        // Normalize names for consistent filtering and display
+        setItems(data.map(i => {
+          let author = i.author;
+          if (author === 'Anh') author = 'Đạt';
+          if (author === 'Em')  author = 'Linh';
+          return { ...i, author };
+        }));
+      })
+      .catch(err => {
+        console.error('Fetch wishlist error:', err);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
@@ -184,10 +197,13 @@ export default function WishlistPage() {
 
   async function handleAdd(form) {
     try {
-      const saved = await insertWishItem({ id: Date.now(), ...form });
+      const saved = await insertWishItem(form);
       setItems(prev => [...prev, saved]);
       invalidateWishlist();
-    } catch (err) { console.error(err); }
+    } catch (err) { 
+      console.error('Add wish error:', err);
+      alert('Không thể thêm mục mới. Vui lòng thử lại!');
+    }
   }
 
   async function handleEditSave(id, form) {
@@ -234,7 +250,7 @@ export default function WishlistPage() {
 
       <div className="wish-header" ref={headerRef}>
         <h1 className="page-title">Danh Sách Ước Mơ ✨</h1>
-        <p className="page-subtitle">Những điều chúng mỉnh muốn cùng nhau thực hiện 🤍</p>
+        <p className="page-subtitle">Những điều Đạt và Linh muốn thực hiện cùng nhau 🤍</p>
         <span className="gold-divider" />
         <div className="wish-tabs" style={{ marginTop: '1rem' }}>
           <button className={`wish-tab ${activeTab === 'gift' ? 'active' : ''}`} onClick={() => setTab('gift')}>
