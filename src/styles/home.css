@@ -233,7 +233,13 @@
   .card-title { text-align: left; font-size: 1.25rem; }
   .card-desc  { text-align: left; }
   .home-page  { padding-top: 2rem; }
+  .menu-grid { padding: 0 0.5rem; }
+  .menu-card { padding: 1.4rem 1.2rem; border-radius: 20px; }
+  .card-icon { font-size: 2.2rem; }
+  .card-title { font-size: 1.2rem; }
+  .card-desc { font-size: 0.75rem; }
 }
 @media (max-width: 400px) {
-  .menu-card { padding: 1.5rem 1.2rem; }
+  .menu-card { padding: 1.2rem 1rem; gap: 0.8rem; }
+  .card-icon { font-size: 2rem; }
 }

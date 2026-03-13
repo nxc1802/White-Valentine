@@ -483,7 +483,12 @@
 
 /* ---- Responsive ---- */
 @media (max-width: 580px) {
-  .letter-card { width: 160px !important; }
-  .add-letter-card { width: 160px; }
+  .letter-card { width: calc(50% - 0.6rem) !important; min-width: 150px; }
+  .add-letter-card { width: calc(50% - 0.6rem) !important; min-width: 150px; }
   .add-letter-modal, .letter-modal { padding: 1.5rem 1.3rem; }
+  .letters-board { gap: 0.8rem; }
+}
+@media (max-width: 380px) {
+  .letter-card { width: 100% !important; max-width: 280px; }
+  .add-letter-card { width: 100% !important; max-width: 280px; }
 }

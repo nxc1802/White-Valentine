@@ -110,7 +110,9 @@ function FallingItem({ item, onEnd, onPhotoClick }) {
   if (item.type === 'photo') {
     return (
       <div className="falling-photo" style={style}
-        onClick={() => onPhotoClick(item.src)} onAnimationEnd={onEnd}
+        onClick={() => onPhotoClick(item.src)} 
+        onTouchStart={() => onPhotoClick(item.src)}
+        onAnimationEnd={onEnd}
         title="Click để chọn ảnh chính">
         <img src={item.src} alt="" draggable={false} />
         <div className="falling-photo-ring" />

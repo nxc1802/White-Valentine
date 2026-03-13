@@ -221,3 +221,41 @@
   justify-content: center;
   gap: 0.6rem;
 }
+
+/* ---- Responsive ---- */
+@media (max-width: 480px) {
+  .gift-content { padding-top: 4rem; gap: 1.5rem; }
+  
+  /* Scale down center frame */
+  .ring-outer  { width: 180px; height: 180px; }
+  .ring-middle { width: 155px; height: 155px; }
+  .frame-photo { width: 130px; height: 130px; }
+  .frame-hint  { font-size: 0.65rem; bottom: -1.8rem; }
+  
+  @keyframes orbitRotate {
+    from { transform: rotate(calc(var(--i) * 90deg)) translateX(85px) rotate(0deg); }
+    to   { transform: rotate(calc(var(--i) * 90deg + 360deg)) translateX(85px) rotate(-360deg); }
+  }
+
+  .gift-card { padding: 1.8rem 1.8rem 1.6rem; border-radius: 20px; }
+  .gift-card-top { font-size: 2rem; }
+  .gift-title { font-size: 1.8rem; }
+  .gift-message { font-size: 0.85rem; line-height: 1.6; }
+  
+  .falling-photo img { width: 60px; height: 60px; border-radius: 10px; }
+  .falling-message { padding: 0.4rem 0.8rem; font-size: 0.75rem; max-width: 160px; }
+}
+
+@media (max-width: 360px) {
+  .ring-outer  { width: 150px; height: 150px; }
+  .ring-middle { width: 130px; height: 130px; }
+  .frame-photo { width: 110px; height: 110px; }
+  
+  @keyframes orbitRotate {
+    from { transform: rotate(calc(var(--i) * 90deg)) translateX(70px) rotate(0deg); }
+    to   { transform: rotate(calc(var(--i) * 90deg + 360deg)) translateX(70px) rotate(-360deg); }
+  }
+  
+  .gift-title { font-size: 1.5rem; }
+  .gift-message { font-size: 0.8rem; }
+}
