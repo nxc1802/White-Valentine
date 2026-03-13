@@ -24,13 +24,13 @@ const EVENT_COLORS = [
 ];
 
 /* ─── Modal ─────────────────────────────────────────────────── */
-function WishModal({ initial, onSave, onClose }) {
+function WishModal({ initial, defaultType = 'gift', onSave, onClose }) {
   const overlayRef = useRef(null);
   const cardRef    = useRef(null);
   const isEdit     = !!initial;
   const [form, setForm] = useState(initial
     ? { type: initial.type, author: initial.author, icon: initial.icon, title: initial.title, description: initial.description || '' }
-    : { type: 'gift', author: 'Đạt', icon: '🎁', title: '', description: '' }
+    : { type: defaultType, author: 'Đạt', icon: defaultType === 'event' ? '🌟' : '🎁', title: '', description: '' }
   );
   const [saving, setSaving] = useState(false);
   const icons = form.type === 'gift' ? GIFT_ICONS : EVENT_ICONS;
@@ -293,7 +293,7 @@ export default function WishlistPage() {
         </div>
       </div>
 
-      {showForm  && <WishModal onSave={handleAdd} onClose={() => setShowForm(false)} />}
+      {showForm  && <WishModal defaultType={activeTab} onSave={handleAdd} onClose={() => setShowForm(false)} />}
       {editItem  && <WishModal initial={editItem} onSave={form => handleEditSave(editItem.id, form)} onClose={() => setEditItem(null)} />}
     </div>
   );
