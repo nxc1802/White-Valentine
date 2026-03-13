@@ -201,8 +201,10 @@ export default function WishlistPage() {
       setItems(prev => [...prev, saved]);
       invalidateWishlist();
     } catch (err) { 
-      console.error('Add wish error:', err);
-      alert('Không thể thêm mục mới. Vui lòng thử lại!');
+      console.error('Add wish error details:', err);
+      // Try to extract more info from Supabase error
+      const errorMsg = err.message || JSON.stringify(err);
+      alert(`Không thể thêm mục mới. Lỗi: ${errorMsg}`);
     }
   }
 
