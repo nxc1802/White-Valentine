@@ -197,8 +197,11 @@ export default function WishlistPage() {
 
   async function handleAdd(form) {
     try {
-      const saved = await insertWishItem({ ...form, id: Date.now() });
-      setItems(prev => [...prev, saved]);
+      // Map names back to DB constraint 'Anh'/'Em'
+      const dbAuthor = form.author === 'Đạt' ? 'Anh' : 'Em';
+      const saved = await insertWishItem({ ...form, id: Date.now(), author: dbAuthor });
+      // UI uses 'Đạt'/'Linh'
+      setItems(prev => [...prev, { ...saved, author: form.author }]);
       invalidateWishlist();
     } catch (err) { 
       console.error('Add wish error details:', err);
@@ -210,7 +213,8 @@ export default function WishlistPage() {
 
   async function handleEditSave(id, form) {
     try {
-      await updateWishItem(id, form);
+      const dbAuthor = form.author === 'Đạt' ? 'Anh' : 'Em';
+      await updateWishItem(id, { ...form, author: dbAuthor });
       setItems(prev => prev.map(i => i.id === id ? { ...i, ...form } : i));
       invalidateWishlist();
     } catch (err) { console.error(err); }

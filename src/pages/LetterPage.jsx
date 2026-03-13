@@ -281,15 +281,17 @@ export default function LetterPage() {
 
   async function handleAdd(newLetter) {
     try {
-      const saved = await insertLetter(newLetter);
-      setLetters(prev => [...prev, saved]);
+      const dbAuthor = newLetter.author === 'Đạt' ? 'Anh' : 'Em';
+      const saved = await insertLetter({ ...newLetter, author: dbAuthor });
+      setLetters(prev => [...prev, { ...saved, author: newLetter.author }]);
       invalidateLetters();
     } catch (err) { console.error(err); }
   }
 
   async function handleEditSave(updated) {
     try {
-      await updateLetter(updated.id, updated);
+      const dbAuthor = updated.author === 'Đạt' ? 'Anh' : 'Em';
+      await updateLetter(updated.id, { ...updated, author: dbAuthor });
       setLetters(prev => prev.map(l => l.id === updated.id ? updated : l));
       invalidateLetters();
     } catch (err) { console.error(err); }
